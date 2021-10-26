@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:${CRDB_PORT}/defaultdb
+    username: root
+    password:
+  jpa:
+    show-sql: true
+  security:
+    user:
+      name: it1
+      password: cred
+
+server:
+  port: ${SERVER_PORT}
