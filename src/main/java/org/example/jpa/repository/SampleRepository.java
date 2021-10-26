@@ -12,9 +12,14 @@ import javax.transaction.Transactional;
 /**
  * @author Vivek
  * @since 24/10/21
+ * <p>
+ * JPA doesn't support dynamic column name in query or in select clause!
  */
 @Repository
 public interface SampleRepository extends JpaRepository<UserEntity, String> {
+
+    @Query(value = "SELECT * from experi where email = :email", nativeQuery = true)
+    UserEntity getUserEntity(@Param("email") String email);
 
     @Modifying
     @Transactional

@@ -39,4 +39,9 @@ public class SampleController {
     public long getMobile(@RequestParam String email) {
         return sampleRepository.retrieveMobile(email);
     }
+
+    @GetMapping("/get/firstname/{email}")
+    public String getfirstName(@RequestParam("email") String email) {
+        return sampleRepository.getUserEntity(email).getFirstName();
+    }
 }
