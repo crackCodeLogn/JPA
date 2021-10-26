@@ -30,9 +30,17 @@ public class SampleController {
     }
 
     @GetMapping("/update/mobile")
-    public int updateUser(@RequestParam String email,
-                          @RequestParam long mobile) {
+    public int updateMobile(@RequestParam String email,
+                            @RequestParam long mobile) {
         return sampleRepository.updateMobile(mobile, email);
+    }
+
+    @GetMapping("/update/mobile2")
+    public void updateMobile2(@RequestParam String email,
+                              @RequestParam long mobile) {
+        UserEntity userEntity = sampleRepository.getUserEntity(email)
+                .setMobile(mobile); //requires the complete context to do the save!
+        sampleRepository.save(userEntity);
     }
 
     @GetMapping("/get/mobile")
